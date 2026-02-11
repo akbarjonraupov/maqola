@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}maqola.tj — Публикации{% endblock %}
+{% block content %}
+<section class="hero glass reveal">
+  <div class="hero-grid">
+    <div>
+      <div class="kicker">Современная платформа публикаций</div>
+      <h1>Электронный журнал <span class="accent">maqola.tj</span></h1>
+      <p>Публикуйте научные и образовательные материалы в современном, динамичном и визуально выразительном формате.</p>
+      <div class="hero-actions">
+        {% if current_user %}
+          <a class="btn" href="/publications/new">Опубликовать статью</a>
+        {% else %}
+          <a class="btn" href="/register">Начать бесплатно</a>
+        {% endif %}
+        <a class="btn-soft" href="#feed">Смотреть ленту</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card tilt">
+        <div class="stat-icon">📚</div>
+        <div class="stat-value" data-counter="120">0</div>
+        <div class="stat-label">Материалов</div>
+      </div>
+      <div class="stat-card tilt">
+        <div class="stat-icon">🎓</div>
+        <div class="stat-value" data-counter="45">0</div>
+        <div class="stat-label">Авторов</div>
+      </div>
+      <div class="stat-card tilt">
+        <div class="stat-icon">🌍</div>
+        <div class="stat-value" data-counter="12">0</div>
+        <div class="stat-label">Категорий</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="feed" class="grid">
+  {% for item in publications %}
+    <article class="card reveal tilt">
+      <span class="badge">{{ item.category }}</span>
+      <h3><a href="/publications/{{ item.id }}">{{ item.title }}</a></h3>
+      <p>{{ item.annotation }}</p>
+      <div class="meta">Автор: {{ item.author.full_name }} · {{ item.created_at.strftime('%d.%m.%Y') }}</div>
+    </article>
+  {% else %}
+    <article class="card empty reveal">
+      <h3>Пока нет публикаций</h3>
+      <p>Будьте первым, кто поделится материалом на maqola.tj.</p>
+    </article>
+  {% endfor %}
+</section>
+{% endblock %}

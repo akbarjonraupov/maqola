@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Регистрация — maqola.tj{% endblock %}
+{% block content %}
+<section class="auth-card">
+  <h2>Создать аккаунт</h2>
+  {% if error %}<div class="error">{{ error }}</div>{% endif %}
+  <form method="post" class="form">
+    <label>ФИО
+      <input type="text" name="full_name" required />
+    </label>
+    <label>Email
+      <input type="email" name="email" required />
+    </label>
+    <label>Пароль
+      <input type="password" name="password" minlength="6" required />
+    </label>
+    <button class="btn" type="submit">Зарегистрироваться</button>
+  </form>
+</section>
+{% endblock %}

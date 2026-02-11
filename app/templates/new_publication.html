@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Новая публикация — maqola.tj{% endblock %}
+{% block content %}
+<section class="auth-card wide">
+  <h2>Новая публикация</h2>
+  <form method="post" class="form">
+    <label>Название
+      <input type="text" name="title" required />
+    </label>
+    <label>Категория
+      <input type="text" name="category" value="Образование" required />
+    </label>
+    <label>Аннотация
+      <textarea name="annotation" rows="4" required></textarea>
+    </label>
+    <label>Текст публикации
+      <textarea name="content" rows="12" required></textarea>
+    </label>
+    <button class="btn" type="submit">Опубликовать</button>
+  </form>
+</section>
+{% endblock %}

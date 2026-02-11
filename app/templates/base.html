@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}maqola.tj{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <header class="topbar glass">
+    <div class="container nav">
+      <a class="brand" href="/">
+        <span class="brand-icon">✦</span>
+        <span>maqola.tj</span>
+      </a>
+      <nav>
+        <a href="/"><span class="nav-icon">🏠</span>Главная</a>
+        {% if current_user %}
+          <a href="/dashboard"><span class="nav-icon">👤</span>Кабинет</a>
+          <a href="/publications/new"><span class="nav-icon">📝</span>Новая публикация</a>
+          <a class="btn-outline" href="/logout">Выйти</a>
+        {% else %}
+          <a href="/login"><span class="nav-icon">🔐</span>Вход</a>
+          <a class="btn" href="/register">Регистрация</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    {% block content %}{% endblock %}
+  </main>
+
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
