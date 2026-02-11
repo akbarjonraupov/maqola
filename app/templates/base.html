@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}maqola.tj{% endblock %}</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="/">maqola.tj</a>
+      <nav>
+        <a href="/">Главная</a>
+        {% if current_user %}
+          <a href="/dashboard">Кабинет</a>
+          <a href="/publications/new">Новая публикация</a>
+          <a class="btn-outline" href="/logout">Выйти</a>
+        {% else %}
+          <a href="/login">Вход</a>
+          <a class="btn" href="/register">Регистрация</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

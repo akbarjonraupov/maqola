@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{ publication.title }} — maqola.tj{% endblock %}
+{% block content %}
+<article class="article">
+  <span class="badge">{{ publication.category }}</span>
+  <h1>{{ publication.title }}</h1>
+  <div class="meta">{{ publication.author.full_name }} · {{ publication.created_at.strftime('%d.%m.%Y %H:%M') }}</div>
+  <p class="annotation">{{ publication.annotation }}</p>
+  <div class="article-body">{{ publication.content | replace('\n', '<br>') | safe }}</div>
+</article>
+{% endblock %}

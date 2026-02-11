@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Кабинет — maqola.tj{% endblock %}
+{% block content %}
+<section class="page-head">
+  <h2>Добро пожаловать, {{ current_user.full_name }}</h2>
+  <a class="btn" href="/publications/new">+ Новая публикация</a>
+</section>
+
+<section class="grid">
+  {% for item in publications %}
+    <article class="card">
+      <span class="badge">{{ item.category }}</span>
+      <h3><a href="/publications/{{ item.id }}">{{ item.title }}</a></h3>
+      <p>{{ item.annotation }}</p>
+      <div class="meta">Опубликовано: {{ item.created_at.strftime('%d.%m.%Y %H:%M') }}</div>
+    </article>
+  {% else %}
+    <article class="card empty">
+      <h3>У вас пока нет публикаций</h3>
+      <p>Создайте первую статью, чтобы она появилась в журнале.</p>
+    </article>
+  {% endfor %}
+</section>
+{% endblock %}

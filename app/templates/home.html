@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}maqola.tj — Публикации{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Электронный журнал maqola.tj</h1>
+  <p>Публикуйте научные и образовательные материалы в современном формате.</p>
+  <div>
+    {% if current_user %}
+      <a class="btn" href="/publications/new">Опубликовать статью</a>
+    {% else %}
+      <a class="btn" href="/register">Начать бесплатно</a>
+    {% endif %}
+  </div>
+</section>
+
+<section class="grid">
+  {% for item in publications %}
+    <article class="card">
+      <span class="badge">{{ item.category }}</span>
+      <h3><a href="/publications/{{ item.id }}">{{ item.title }}</a></h3>
+      <p>{{ item.annotation }}</p>
+      <div class="meta">Автор: {{ item.author.full_name }} · {{ item.created_at.strftime('%d.%m.%Y') }}</div>
+    </article>
+  {% else %}
+    <article class="card empty">
+      <h3>Пока нет публикаций</h3>
+      <p>Будьте первым, кто поделится материалом на maqola.tj.</p>
+    </article>
+  {% endfor %}
+</section>
+{% endblock %}
