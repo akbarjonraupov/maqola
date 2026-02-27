@@ -1,30 +1,43 @@
-# maqola.tj
+# Math & Physics Solver (one EXE)
 
-Учебная платформа для авторизации пользователей и публикации материалов, вдохновлённая интерфейсом журналов OpenEdu.
+Программа для решения базовых математических и физических задач в одном файле `.exe`.
 
-## Возможности
+## Что умеет
 
-- Регистрация и вход пользователей
-- Сессии через JWT в `HttpOnly` cookie
-- Создание публикаций
-- Просмотр ленты публикаций
-- Личный кабинет автора
-- Современный фронтенд на HTML/CSS/JavaScript с анимациями и интерактивными эффектами
+- **Математика**:
+  - Решение квадратных уравнений `ax² + bx + c = 0`
+  - Площадь и периметр прямоугольника
+- **Физика**:
+  - Сила `F = m · a`
+  - Потенциальная энергия `E = m · g · h`
 
-## Стек
-
-- Backend: FastAPI
-- База данных: SQLite + SQLAlchemy
-- Фронтенд: HTML + CSS + JavaScript
-- Шаблоны: Jinja2
-
-## Запуск
+## Запуск в Python
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
+python solver_app.py
 ```
 
-Откройте `http://127.0.0.1:8000`.
+## Сборка в один EXE (Windows)
+
+1. Установить зависимости:
+
+```bash
+pip install -r requirements.txt
+```
+
+2. Собрать exe:
+
+```bash
+pyinstaller --noconfirm --onefile --windowed --name solver solver_app.py
+```
+
+3. Готовый файл будет в каталоге:
+
+```text
+dist/solver.exe
+```
+
+## Примечание
+
+- На Linux/macOS получится бинарник для своей платформы.
+- Для `solver.exe` нужно собирать на Windows (или в Windows CI/VM).
